@@ -18,9 +18,11 @@ const ShoppingCart = () => {
 
   return (
     <div className="shopping-cart">
-      {cart.map(item => (
-        <Item key={item.id} {...item} />
-      ))}
+      {cart.length ? (
+        cart.map(item => <Item key={item.id} {...item} />)
+      ) : (
+        <p>Your cart is empty.</p>
+      )}
 
       <div className="shopping-cart__checkout">
         <p>Total: ${getCartTotal()}</p>
