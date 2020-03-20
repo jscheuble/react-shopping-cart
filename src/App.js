@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Route } from "react-router-dom";
 import data from "./data";
 
@@ -12,12 +12,8 @@ import ShoppingCart from "./components/ShoppingCart";
 
 function App() {
   const [products] = useState(data);
-  const [cart, setCart] = useState(
-    window.localStorage.getItem("cart")
-      ? JSON.parse(window.localStorage.getItem("cart"))
-      : []
-  );
-  window.localStorage.setItem("cart", JSON.stringify(cart));
+  const [cart, setCart] = useState([]);
+
   const addItem = item => {
     setCart([...cart, item]);
   };
